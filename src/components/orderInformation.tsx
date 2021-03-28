@@ -3,7 +3,7 @@ import "../styles/Styles.css";
 const OrderInformation = (props: any) => {
   const { order: data } = props;
   return (
-    <div className="Order-Info">
+    <div>
       <h1>Order #{data.orderNumber}</h1>
       <p>{data.date}</p>
       <div>
