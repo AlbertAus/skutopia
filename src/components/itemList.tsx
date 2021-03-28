@@ -1,14 +1,38 @@
-import React, { Component } from "react";
-import { OrderSchema } from "../schema/orderSchema";
+import "../styles/Styles.css";
 
-const ItemList = (order: OrderSchema) => {
+const ItemList = (props: any) => {
+  const { items: data, endPoint } = props;
+
   return (
-    <div>
-      <h1>Order #{order.orderNumber}</h1>
-      <p>{order.date}</p>
+    <div className="Order-Info">
       <div>
-        <strong>Sales Channel: {order.channel}</strong>
+        <p>
+          <div style={{ float: "left" }}>
+            <strong>{data.length} Items</strong>
+          </div>
+          <div style={{ float: "right", marginRight: "10px" }}>To Pick</div>
+        </p>
       </div>
+      <br />
+      {data.map((item: any) => {
+        return (
+          <div>
+            <hr style={{ color: "lightgray", border: "2px solid" }} />
+            <div>{item.Description}</div>
+            <div>
+              {item.Options.map((option: any) => {
+                return (
+                  <div>
+                    {option.Name}:{option.Value}
+                  </div>
+                );
+              })}
+            </div>
+            {endPoint === "warehouse" ? <div>Qty:{item.Quantity}</div> : ""}
+            <div>SKU:{item.Sku}</div>
+          </div>
+        );
+      })}
     </div>
   );
 };

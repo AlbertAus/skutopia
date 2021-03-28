@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { OrderSchema } from "../schema/orderSchema";
+import "../styles/Styles.css";
 
-const OrderInformation = (order: any) => {
-  console.log("order inside orderInformation is::", order);
-  const { order: data } = order;
+const OrderInformation = (props: any) => {
+  const { order: data } = props;
   return (
-    <div>
+    <div className="Order-Info">
       <h1>Order #{data.orderNumber}</h1>
       <p>{data.date}</p>
       <div>

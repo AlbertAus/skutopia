@@ -1,23 +1,43 @@
-import React, { Component } from "react";
 import OrderInformation from "../components/orderInformation";
+import ItemList from "../components/itemList";
+import ShippingInformation from "../components/shippingInformation";
+import CustomerInformation from "../components/customerInformation";
 import { orderSchema, OrderSchema } from "../schema/orderSchema";
 import { IntegrationOrder1, IntegrationOrder2 } from "../data/order";
 
-export class OrdersOutput extends Component {
-  //   constructor(props: any) {
-  //     super(props);
-  //     this.state = {};
-  //   }
-
-  public render() {
-    const order1: OrderSchema = orderSchema(IntegrationOrder1);
-    console.log("order1 is::", order1);
-    return (
-      <div>
-        <OrderInformation order={order1} />
-      </div>
-    );
-  }
-}
+const OrdersOutput = (props: any) => {
+  const { endPoint, source } = props;
+  const orderSource: any =
+    source === "shopify" ? IntegrationOrder1 : IntegrationOrder2;
+  const order1: OrderSchema = orderSchema(orderSource);
+  console.log("order1 is::", order1);
+  console.log("endPoint is::", endPoint);
+  console.log("source is::", source);
+  return (
+    <table>
+      <tr>
+        <td>
+          <OrderInformation order={order1} />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ItemList items={order1.items} endPoint={endPoint} />
+          {endPoint === "warehouse" ? (
+            <CustomerInformation
+              shippingDetails={order1.shippingDetails}
+              endPoint={endPoint}
+            />
+          ) : (
+            <ShippingInformation
+              shippingDetails={order1.shippingDetails}
+              endPoint={endPoint}
+            />
+          )}
+        </td>
+      </tr>
+    </table>
+  );
+};
 
 export default OrdersOutput;

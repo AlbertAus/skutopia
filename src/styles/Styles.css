@@ -1,0 +1,9 @@
+.Order-Info {
+  text-align: left;
+  border: 1px solid lightgray;
+  width: 95%;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-collapse: collapse;
+  padding: 20px;
+}

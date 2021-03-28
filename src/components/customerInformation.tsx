@@ -1,13 +1,16 @@
-import React, { Component } from "react";
-import { OrderSchema } from "../schema/orderSchema";
+import "../styles/Styles.css";
 
-const CustomerInformation = (order: OrderSchema) => {
+const CustomerInformation = (props: any) => {
+  const { shippingDetails: data } = props;
   return (
-    <div>
-      <h1>Order #{order.orderNumber}</h1>
-      <p>{order.date}</p>
+    <div className="Order-Info">
+      <h2>Customer Information</h2>
+      <hr />
+      <br />
       <div>
-        <strong>Sales Channel: {order.channel}</strong>
+        <div> {data.shippingContactName}</div>
+        <div>{data.shippingAddress}</div>
+        <div>{data.shippingContactEmail}</div>
       </div>
     </div>
   );

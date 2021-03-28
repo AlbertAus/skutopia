@@ -1,12 +1,24 @@
-import React from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 import OrdersOutput from "./containers/orderContainer";
 function App() {
+  const [endPoint, setEndPoint] = useState("inventory");
+  const [source, setSource] = useState("shopify");
   return (
     <div className="App">
+      <div>
+        <h1>Choose end point</h1>
+        <button onClick={() => setEndPoint("inventory")}>Inventory</button>
+        <button onClick={() => setEndPoint("warehouse")}>Warehouse </button>
+      </div>
+      <div>
+        <h1>Choose integration source</h1>
+        <button onClick={() => setSource("shopify")}>shopify</button>
+        <button onClick={() => setSource("woo_commerce")}>woo_commerce </button>
+      </div>
       <h2 className="App-menu">&#60; RETURN TO ORDERS</h2>
-      <OrdersOutput />
+
+      <OrdersOutput endPoint={endPoint} source={source} />
     </div>
   );
 }
