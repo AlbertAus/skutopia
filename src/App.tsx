@@ -6,11 +6,13 @@ function App() {
   const [source, setSource] = useState("shopify");
   return (
     <div className="App">
+      {/* setup End Point system */}
       <div>
         <h1>Choose end point</h1>
         <button onClick={() => setEndPoint("inventory")}>Inventory</button>
         <button onClick={() => setEndPoint("warehouse")}>Warehouse </button>
       </div>
+      {/* setup source */}
       <div>
         <h1>Choose integration source</h1>
         <button onClick={() => setSource("shopify")}>shopify</button>

@@ -10,9 +10,6 @@ const OrdersOutput = (props: any) => {
   const orderSource: any =
     source === "shopify" ? IntegrationOrder1 : IntegrationOrder2;
   const order1: OrderSchema = orderSchema(orderSource);
-  console.log("order1 is::", order1);
-  console.log("endPoint is::", endPoint);
-  console.log("source is::", source);
   return (
     <table>
       <tr>
