@@ -3,7 +3,7 @@ import "../styles/Styles.css";
 const CustomerInformation = (props: any) => {
   const { shippingDetails: data } = props;
   return (
-    <div className="Order-Info">
+    <div>
       <h2>Customer Information</h2>
       <hr />
       <br />
