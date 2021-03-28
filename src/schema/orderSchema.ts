@@ -94,23 +94,23 @@ export function orderSchema(order: any): OrderSchema {
           Quantity: item.Quantity,
           UnitPrice: item.UnitPrice,
           Options: item.Options.map((option: any) => {
-              console.log('option is::', option);
+            console.log("option is::", option);
             return {
               id: option,
               Name: payload.Options.filter((obj: any) => {
-                  console.log('obj inside filter is::', obj);
-                  console.log('option inside filter is::', option);
+                console.log("obj inside filter is::", obj);
+                console.log("option inside filter is::", option);
                 if (obj.Id === option) {
-                    console.log('Match and obj.Name is::', obj.Name);
-                  return obj.Name;
+                  console.log("Match and obj.Name is::", obj.Name);
+                  return obj;
                 }
-              }),
+              })[0].Name,
               Value: payload.Options.filter(function (obj: any) {
                 if (obj.Id === option) {
-                    console.log('Match and obj.Value is::', obj.Value);
-                  return obj.Value;
+                  console.log("Match and obj.Value is::", obj.Value);
+                  return obj;
                 }
-              }),
+              })[0].Value,
             };
           }),
         };
