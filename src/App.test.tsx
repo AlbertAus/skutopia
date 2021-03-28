@@ -1,9 +1,25 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import Enzyme, { shallow, mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+Enzyme.configure({ adapter: new Adapter() });
+
+describe('Test App component', () => {
+  it('case: expect to match snapshot', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper).toMatchSnapshot();
+});
+
+  it('case: expect render correctly', () => {
+      const wrapper = shallow(<App />);
+
+      expect(wrapper.find('.App').length).toEqual(1);
+  });
+
+  it('case: expect button inventory to be 1', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('button[id="inventory"]').length).toEqual(1);
+});
 });

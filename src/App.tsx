@@ -9,8 +9,8 @@ function App() {
       {/* setup End Point system */}
       <div>
         <h1>Choose end point</h1>
-        <button onClick={() => setEndPoint("inventory")}>Inventory</button>
-        <button onClick={() => setEndPoint("warehouse")}>Warehouse </button>
+        <button id='inventory' onClick={() => setEndPoint("inventory")}>Inventory</button>
+        <button id='warehouse' onClick={() => setEndPoint("warehouse")}>Warehouse </button>
       </div>
       {/* setup source */}
       <div>
