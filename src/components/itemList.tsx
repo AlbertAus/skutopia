@@ -4,7 +4,7 @@ const ItemList = (props: any) => {
   const { items: data, endPoint } = props;
 
   return (
-    <div className="Order-Info">
+    <div>
       <div>
         <p>
           <div style={{ float: "left" }}>
@@ -23,12 +23,13 @@ const ItemList = (props: any) => {
               {item.Options.map((option: any) => {
                 return (
                   <div>
-                    {option.Name}:{option.Value}
+                    {option.Name}:{option.Value}{" "}
+                    {endPoint === "warehouse" ? "|" : ""}
                   </div>
                 );
               })}
             </div>
-            {endPoint === "warehouse" ? <div>Qty:{item.Quantity}</div> : ""}
+            {endPoint === "warehouse" ? <div>Qty:{item.Quantity} | </div> : ""}
             <div>SKU:{item.Sku}</div>
           </div>
         );
